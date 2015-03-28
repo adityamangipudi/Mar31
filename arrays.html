@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+    <script>
+        var arr = [1,2,3,4,5];
+        console.log( typeof arr);
+        console.log( arr.toString());
+        var squared=[];
+        for(var i= 0; i<arr.length; i++){
+            squared.push(arr[i]*arr[i]);//push adds each element at the end of the array
+        }
+        console.log(squared);
+
+        var arr2= new Array(6);
+        var sqarr = arr.map(function(i){//maps for all elements of arr
+                return i*i;
+
+        });
+
+        console.log(sqarr);
+
+        function sum(a,b){
+            return a+b;
+        }
+        console.log(arr.reduce(sum));
+        console.log(arr);
+        function log(c){
+            console.log(c);
+        }
+        arr.forEach(log);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

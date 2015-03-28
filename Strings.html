@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS Data Types</title>
+    <script>
+        var s ='aditya';
+        console.log(typeof s);
+        var b = false;
+        console.log(typeof b);
+        var n = 9;
+        console.log(typeof n);
+        var a = null;
+        console.log(typeof a);
+        var c = undefined;
+        console.log(typeof c);
+        var obj = {val:'name'}
+        console.log(obj);
+
+       console.log('name is \' aditya\'');
+        var x ={name:'Lakshmi'};
+        var y =Object.create(x);
+        console.log(Object.getPrototypeOf(y));
+        console.log(y.hasOwnProperty('name'));
+        y.name='Aditya';
+        console.log(y.name);
+        console.log(y.hasOwnProperty('name'));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

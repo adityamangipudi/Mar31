@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Second Objects</title>
+    <script>
+
+        var x ={name:'Aditya'};
+        console.log(x.toString());
+        var date= new Date();
+        console.log(date.toString());
+        console.log(typeof date);
+        console.log(typeof Date);
+        function Person(name){
+          this.name=name;
+
+        };
+        Person.prototype.sayHello =function(){
+            console.log('Hi');
+        };
+
+        var p = new Person('Aditya');
+        console.log(p.name);
+        p.sayHello();
+        console.log(Object.getPrototypeOf(p));
+        console.log(p instanceof Person);
+
+        console.log(p.constructor);
+
+        var x = 'Hello World';
+        var y = new String ('Hello world');
+        console.log(x, typeof x);//string
+        console.log(y, typeof y);//string.prototype
+        console.log(x.length);
+        console.log(y.length);
+
+
+        var o ={
+            name:'Nina',
+            sayHello:function(){
+                console.log(this.name);//this points to o's name
+            }
+        };
+        o.sayHello();
+
+        Person('Lakshmi');
+        console.log(window.name);
+        var l ={name:'Misha'};
+        o.sayHello.call(l);
+
+        console.log( Object.prototype.toString.call(date));
+        console.log(Date.prototype.toString.call(date));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
