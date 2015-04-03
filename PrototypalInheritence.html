@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Deck of Cards</title>
+
+    <script>
+        //Values to be used
+        var suits = [ 'Club', 'Diamond', 'Hearts', 'Spades'];
+        var values = ['Ace', '2', '3','4','5','6','7','8','9','10', 'Jack', 'Queen', 'King'];
+        var direction = ['top', 'bottom', 'both'];
+
+
+
+        //Each Card has a suit and value
+        function Card(suit, value){
+            this.suit = suit;
+            this.value = value;
+
+        }
+        //gives toString value of every card
+        Card.prototype.toString = function(){
+            return this.value + ' of ' + this.suit;
+        }
+
+        //creates 52 cards in every deck
+        function Deck(){
+            cards = []
+            for (var i =0; i<suits.length; i++){
+
+                for (var j =0; j<values.length; j++){
+
+                    cards.push(new Card(suits[i], values[j]));
+
+                }
+
+            }
+            this.cards = cards;
+
+        };
+
+        //shuffles the deck one card at a time
+        Deck.prototype.shuffle = function(){
+            var ri=0;
+            for (var i = 0; i< 52; i++){
+                //picks the position of i and swaps it with random location
+                ri =Math.floor( Math.random()*51);
+                var temp = this.cards[ri];
+                this.cards[ri]=this.cards[i];
+                this.cards[i]= this.cards[ri];
+
+
+            }
+
+
+        };
+        //blocksize is number of cards that are shuffled together,
+        //shuffle direction is the whether you want to shuffle on the top, bottom, or both(direction in both chosen randomly)
+        //shuffles is the number of times deck is shuffles
+        Deck.prototype.shuffleBlock = function(blockSize, shuffleDirection, shuffles){
+            if(blockSize>=5&&blockSize<=26){
+                for (var time=0; time<shuffles; time++){
+
+                    //picks the start pos of block
+                    var ri = Math.floor( Math.random()*(51-blockSize));
+                    //stores the removed block in temparr
+                    var temparr = this.cards.splice(ri, blockSize);
+                    //stores the cards in the top
+                    if(shuffleDirection=='top'){
+                        for(var i=temparr.length-1;i>=0;i--){
+                            this.cards.unshift(temparr[i]);
+                        }
+
+                    }
+                    //stores it at the bottom
+                    else if(shuffleDirection=='bottom'){
+                        for(var i=0; i<temparr.length;i++){
+                            this.cards.push(temparr[i]);
+                        }
+                    }
+                    //stores it in random direction
+                    else{
+
+                        var num = Math.round(Math.random()*1);
+                        if(num===0){
+                            for(var i=temparr.length-1;i>=0;i--){
+                                this.cards.unshift(temparr[i]);
+                            }
+                        }
+                        else{
+                            for(var i=0; i<temparr.length;i++){
+                                this.cards.push(temparr[i]);
+                            }
+                        }
+
+
+                    }
+                }
+
+
+
+
+            }
+            //if blocksize is invalid throws error
+            else{
+                throw 'Invalid blockSize';
+            }
+
+
+
+        };
+        Deck.prototype.toString=function(){
+            arr = []
+            console.log(this.cards.length);
+            for(var l = 0; l<this.cards.length; l++){
+                arr.push(this.cards[l].toString());
+
+            }
+            return arr;
+        }
+        var deck1 = new Deck();
+
+        var deck2 = new Deck();
+        console.log(deck2.toString());
+        deck2.shuffle();
+        console.log(deck2.toString());
+        deck2.shuffle();
+        console.log(deck2.toString());
+        var deck3 = new Deck();
+        console.log(deck3.toString());
+        deck3.shuffleBlock(13, direction[1], 1);
+        console.log(deck3.toString());
+        var deck4 = new Deck();
+        console.log(deck4.toString());
+        deck4.shuffleBlock(13, direction[0], 4);
+        console.log(deck4.toString());
+        var deck5 = new Deck();
+        console.log(deck5.toString());
+        deck5.shuffleBlock(13, direction[2], 4);
+        console.log(deck5.toString());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

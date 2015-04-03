@@ -15,16 +15,20 @@
 
         Object.prototype.toJSON=function(){
             // keys = Object.keys(this);
-            //todo finish toJson
+
             var str = '';
+            var restrictedKeys = ['id'];
 
             for (var i in this){
-                str += +i+', ';
+                if(typeof this[i]!== 'function' && restrictedKeys.indexOf(i) === -1){
+                    str += i+': '+ this[i]+', ';
+                }
+
             }
 
 
 
-            return str
+            return str;
         };
         console.log(JSON.stringify(o));
 

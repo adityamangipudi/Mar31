@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Bind</title>
+    <script>
+        function sum(a,b){
+            console.log(arguments);
+            return a+b;}
+        var bound = sum.bind(null, 2, 3);
+        console.log(bound());
+        var fn = sum.bind(null, 2);//partial applications??
+        console.log(fn(66));
+        console.log(fn(2,2));
+        console.log(fn());
+        console.log(fn(4,5));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
